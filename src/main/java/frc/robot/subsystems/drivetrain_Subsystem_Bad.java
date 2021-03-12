@@ -1,27 +1,26 @@
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 import frc.robot.drivetrain_Commands.mechanum_Drive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.Robot;
 import frc.robot.OI;
 //Use this to list commands for the drivetrain that will be called in Drivetrain commands.
 
-public class drivetrain_Subsystem_Bad extends Subsystem {
+public class drivetrain_Subsystem extends Subsystem {
     //Creates the four driving spark motors
     SpeedController frontRightMotor = new Spark(0);
     SpeedController frontLeftMotor = new Spark(1);
     SpeedController  rearRightMotor = new Spark(3);
     SpeedController rearLeftMotor = new Spark(2);
     //Creates the Gyro
-    private ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
+    //private ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
 
-      Encoder encoder = new Encoder (0, 1);
-      Encoder encoder2= new Encoder (0, 2);
-      Encoder encoder3= new Encoder (0, 3);
-      Encoder encoder4 = new Encoder (0, 4);
+    //  Encoder encoder = new Encoder (0, 1);
+    //  Encoder encoder2= new Encoder (0, 2);
+    //  Encoder encoder3= new Encoder (0, 3);
+    //  Encoder encoder4 = new Encoder (0, 4);
 
    // Creates the number that will be plugged in and used to control the Motors. This number will be changed constantly by the joystick.
     double frontRightMotorSpeed = 0;
@@ -42,13 +41,13 @@ public void initDefaultCommand() {
     if (forward == 0) {
     kp = 0.07;
     }   
-    double angle = Gyro.getAngle();
+    //double angle = Gyro.getAngle();
     {
         if (forward < 0) {
-        angle = angle * -1;
+        //angle = angle * -1;
         }
     }
-    rotate = -angle * kp - rotate;
+   // rotate = -angle * kp - rotate;
     frontRightMotor.set((forward + sideways - rotate) * -1);
     frontLeftMotor.set((forward - sideways - rotate) * -1);
     rearRightMotor.set(forward - sideways + rotate);
@@ -97,7 +96,7 @@ public void initDefaultCommand() {
         rearRightMotor.set((rearRightMotorSpeed) - rotatemovement);
         rearLeftMotor.set((rearLeftMotorSpeed) - rotatemovement);
         
-        if (Math.abs(frontRightMotorSpeed) > 1 || Math.abs(rearRightMotorSpeed) > 1 || Math.abs(rearRightMotorSpeed) > 1 || Math.abs(rearLeftMotorSpeed) > 1) {
+            /*if (Math.abs(frontRightMotorSpeed) > 1 || Math.abs(rearRightMotorSpeed) > 1 || Math.abs(rearRightMotorSpeed) > 1 || Math.abs(rearLeftMotorSpeed) > 1) {
             double max = 0;
             //finds the largest of the two values and copes it to the "max" double
             max = Math.max(Math.abs(frontRightMotorSpeed), Math.abs(rearRightMotorSpeed));
@@ -108,9 +107,10 @@ public void initDefaultCommand() {
             frontLeftMotorSpeed = frontLeftMotorSpeed / max;
             frontRightMotorSpeed = frontRightMotorSpeed / max;
             rearRightMotorSpeed = rearRightMotorSpeed / max;
-
+            */
+        
         }
-     }
+
 
    
     public void getGyro() {
@@ -141,11 +141,11 @@ public void initDefaultCommand() {
     }
 
     public void reset(){
-        Gyro.reset();
+        //Gyro.reset();
     }
 
-    public double getdistance() {
-        return encoder2.getRaw();
+    public void getdistance() {
+        //return encoder2.getRaw();
     }
  
     public void Stop(){
@@ -155,4 +155,3 @@ public void initDefaultCommand() {
  
 }
 }
-*/
