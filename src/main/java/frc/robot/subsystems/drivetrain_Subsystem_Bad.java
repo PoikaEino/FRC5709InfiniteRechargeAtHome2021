@@ -33,7 +33,7 @@ public class drivetrain_Subsystem extends Subsystem {
 
 public void initDefaultCommand() {
     // Sets default command
-    //setDefaultCommand(new mechanum_Drive());
+    setDefaultCommand(new mechanum_Drive());
   }
     //Auto drive. The Auto commands fill in what the three paramaters should be.
     public void auton_Drive (double forward, double sideways, double rotate) {
